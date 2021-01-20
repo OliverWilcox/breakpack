@@ -24,12 +24,17 @@ export default {
   data: () => ({
 	  releases: [
 		  {
-			  id: 'BP-02',
+			  id: 'BP-003',
 			  title: 'world massive',
 			  cover: 'https://f4.bcbits.com/img/a1714057810_10.jpg'
 		  },
 		  {
-			  id: 'BP-01',
+			  id: 'BP-002',
+			  title: 'XX_XX',
+			  cover: 'https://f4.bcbits.com/img/a0124850087_10.jpg'
+		  },
+		  {
+			  id: 'BP-001',
 			  title: 'XX_XX',
 			  cover: 'https://f4.bcbits.com/img/a0124850087_10.jpg'
 		  }
@@ -41,7 +46,7 @@ export default {
 <style>
 #app {
 	width: 375px;
-	background: black;
+	min-height: 800px;
 }
 
 h1 {
@@ -107,5 +112,6 @@ hr {
 .releases {
 	position: absolute;
 	top: 538px;
+	height: auto;
 }
 </style>

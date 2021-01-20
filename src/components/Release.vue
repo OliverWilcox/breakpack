@@ -45,7 +45,7 @@ export default {
 
 .id {
 	position: absolute;
-	width: 61px;
+	width: 80px;
 	height: 24px;
 	left: 30px;
 	top: 26px;
