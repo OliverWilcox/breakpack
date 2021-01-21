@@ -8,7 +8,7 @@
 		<hr></hr>
 
 	  	<div class="releases">
-		  	<Release v-for="r in releases" v-bind:id="r.id" v-bind:title="r.title" v-bind:cover="r.cover"></Release>
+		  	<Release v-for="r in releases"  v-bind:id="r.id" v-bind:title="r.title" v-bind:cover="r.cover" v-bind:date="r.date" v-bind:artist="r.artist" v-bind:type="r.type" v-bind:spotifylink="r.spotifylink" v-bind:bandcamplink="r.bandcamplink"></Release>
 	  	</div>
 	</div>
 </template>
@@ -26,19 +26,34 @@ export default {
 		  {
 			  id: 'BP-003',
 			  title: 'world massive',
-			  cover: 'https://f4.bcbits.com/img/a1714057810_10.jpg'
+			  cover: 'https://f4.bcbits.com/img/a1714057810_10.jpg',
+			  date: '12/07/21',
+			  artist: 'Shortghost',
+              type: 'EP',
+			  spotifylink: 'https://open.spotify.com/album/3JBPcjSVKwCaUltFKBIPs7',
+			  bandcamplink: 'https://shortghost.bandcamp.com/album/xx-xx-2'
 		  },
 		  {
 			  id: 'BP-002',
 			  title: 'XX_XX',
-			  cover: 'https://f4.bcbits.com/img/a0124850087_10.jpg'
+			  cover: 'https://f4.bcbits.com/img/a0124850087_10.jpg',
+			  date: '12/07/21',
+			  artist: 'Shortghost',
+              type: 'EP',
+			  spotifylink: 'https://open.spotify.com/album/3JBPcjSVKwCaUltFKBIPs7',
+			  bandcamplink: 'https://shortghost.bandcamp.com/album/xx-xx-2'
 		  },
 		  {
 			  id: 'BP-001',
 			  title: 'XX_XX',
-			  cover: 'https://f4.bcbits.com/img/a0124850087_10.jpg'
+			  cover: 'https://f4.bcbits.com/img/a0124850087_10.jpg',
+			  date: '12/07/21',
+			  artist: 'Shortghost',
+              type: 'EP',
+			  spotifylink: 'https://open.spotify.com/album/3JBPcjSVKwCaUltFKBIPs7',
+			  bandcamplink: 'https://shortghost.bandcamp.com/album/xx-xx-2'
 		  }
-	  ]
+	  ],
   })
 }
 </script>
@@ -47,6 +62,10 @@ export default {
 #app {
 	width: 375px;
 	min-height: 800px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 400px;
 }
 
 h1 {
