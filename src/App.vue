@@ -1,11 +1,14 @@
 <template>
 	<div id="app">
 		<h1>breakpack</h1>
+
         <hr>
+
 		<p class="about-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et purus eu quam luctus imperdiet ut eget nisl. Fusce non orci tincidunt, egestas mi non, blandit massa. Proin ac enim dictum sem auctor malesuada a ut nulla. Morbi quis lectus consectetur, imperdiet elit eu, vehicula mauris. In hac habitasse platea dictumst. Etiam varius dapibus sagittis. Cras molestie vulputate justo, non facilisis urna iaculis sit amet. Etiam efficitur diam vitae semper auctor.</p>
 		<p class="about-2">Donec aliquet dignissim tortor, eu efficitur nisl rhoncus et. Nullam orci odio, venenatis sed eleifend ac, commodo quis justo. Vestibulum mattis tristique pharetra. Nunc quis orci porta, ultricies nibh ut, sollicitudin massa. Nunc consectetur neque vel quam fringilla.</p>
+
 	  	<div class="releases">
-		  	<Release v-for="r in releases"   v-bind:r="releases" v-bind:id="r.id" v-bind:title="r.title" v-bind:cover="r.cover" v-bind:date="r.date" v-bind:artist="r.artist" v-bind:type="r.type" v-bind:spotifylink="r.spotifylink" v-bind:bandcamplink="r.bandcamplink" v-bind:track="r.track"></Release>
+		  	<Release v-for="r in releases" v-bind:release="r"></Release>
 	  	</div>
 	</div>
 </template>

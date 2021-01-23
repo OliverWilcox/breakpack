@@ -1,60 +1,64 @@
 <template>
-	<div class="release"  v-bind:class="{ open }"  v-on:click="open = !open" >
+	<div class="release" v-bind:class="{ open }">
 		<hr>
-		<p class="id" >{{id}}</p>
-		<p class="title">{{title}}</p>
-		<img class="cover" v-bind:src="cover">
-		<audio class="playtest" ref="player" v-bind:src="track"></audio>
+
+		<div >
+
+			<p class="id" >{{release.id}}</p>
+			<p class="title" v-on:click="open = !open">{{release.title}}</p>
+
+			<img class="cover" v-bind:src="release.cover">
+
+		</div>
+
+		<audio class="playtest" ref="player" v-bind:src="release.track"></audio>
+
 		<div class="opencontainer" v-if="open === true">
-		<p class="date">{{date}}</p>
-		<p class="artist">{{artist}}</p>
-		<p class="Type">{{type}}</p>
-		<img class="big-cover" v-bind:src="cover" >
-		<div class="play">
-		<div class="line"></div>
-		<p class="title">{{title}}</p>
-		<p class="playbtn" v-on:click="open = !open, play = !play"><i class="fas fa-play" id="play" v-if="play === false" v-on:click="playing()"></i> <i class="fas fa-pause" id="pause" v-if="play === true" v-on:click="pausing()"></i></p>
-		<p class="spotifybtn" v-on:click="spotifyOpen()"><i class="fab fa-spotify"></i></p>
-		<p class="bandcampbtn"><i class="fab fa-bandcamp" v-on:click="bandcampOpen()"></i></p>
+			<p class="date">{{release.date}}</p>
+			<p class="artist">{{release.artist}}</p>
+			<p class="Type">{{release.type}}</p>
+
+			<img class="big-cover" v-bind:src="release.cover">
+
+			<div class="play">
+				<div class="line"></div>
+				<p class="title">{{release.title}}</p>
+
+				<p class="playbtn">
+					<i class="fas fa-pause" v-if="playing === true" v-on:click="pause"></i>
+					<i class="fas fa-play" v-else v-on:click="play"></i>
+				</p>
+
+				<a class="spotifybtn" v-bind:href="release.spotifylink">
+					<i class="fab fa-spotify"></i>
+				</a>
+
+				<a class="bandcampbtn" v-bind:href="release.bandcamplink">
+					<i class="fab fa-bandcamp"></i>
+				</a>
+			</div>
 		</div>
-		</div>
+
 	</div>
 </template>
 
 <script>
 export default {
 	props: [
-		'r',
-		'releases',
-		'id',
-		'title',
-		'cover',
-		'date',
-		'artist',
-		'type',
-		'spotifylink',
-		'bandcamplink',
-		'track',
+		'release'
 	],
-	
 	data: () => ({
-		open: false
+		open: false,
+		playing: false
 	}),
-	mounted(){
-this.play = false;
-	},
-	methods:{
-		spotifyOpen(){
-         window.location = this.spotifylink;
+	methods: {
+		play() {
+			this.$refs.player.play();
+			this.playing = true;
 		},
-		bandcampOpen(){
-         window.location = this.bandcamplink
-		},
-		playing(){
-			this.$refs.player.play()
-		},
-		pausing(){
-			this.$refs.player.pause()
+		pause() {
+			this.$refs.player.pause();
+			this.playing = false;
 		}
 	}
 };
@@ -124,58 +128,57 @@ this.play = false;
 
 .date{
 	position: absolute;
-width: 41px;
-height: 19px;
-left: 30px;
-top: 90px;
+	width: 41px;
+	height: 19px;
+	left: 30px;
+	top: 90px;
 
-font-family: Rubik;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-/* identical to box height */
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
 
-
-color: #FFFFFF;
+	color: #FFFFFF;
 }
 
-.artist{
+.artist {
 	position: absolute;
-width: 84px;
-height: 19px;
-left: 126px;
-top: 90px;
-font-family: Rubik;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-color: #FFFFFF;
+	width: 84px;
+	height: 19px;
+	left: 126px;
+	top: 90px;
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	color: #FFFFFF;
 }
 
-.Type{
-position: absolute;
-width: 84px;
-height: 19px;
-left: 318px;
-top: 90px;
-font-family: Rubik;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-color: #FFFFFF;
+.Type {
+	position: absolute;
+	width: 84px;
+	height: 19px;
+	left: 318px;
+	top: 90px;
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	color: #FFFFFF;
 }
 
 .play{
 	position: absolute;
-width: 313px;
-height: 54px;
-left: 31px;
-top: 143px;
+	width: 313px;
+	height: 54px;
+	left: 31px;
+	top: 143px;
 
-background: #FFFFFF;
+	background: #FFFFFF;
 }
 
 .play .title{
@@ -183,49 +186,47 @@ background: #FFFFFF;
     color: black;
 	left: 75px;
 	font-size: 18px;
-	
+
 }
 
-.line{
+.line {
 	left:54px;
 	background-color: black;
-    width: 1px;
+	width: 1px;
 	height: 38px;
 	position: absolute;
 	top: 9px;
 }
 
 .playbtn{
-position:absolute;
-top: 15px;	
-left: 19px;
-font-size: 22px;
+	position:absolute;
+	top: 15px;
+	left: 19px;
+	font-size: 22px;
 }
-
-
 
 .playbtn .open #pause{
 	display: block;
 }
 
-.spotifybtn{
+.spotifybtn {
 	position:absolute;
-top: 15px;	
-left: 245px;
-font-size: 22px;
+	top: 15px;
+	left: 245px;
+	font-size: 22px;
 }
 
-.bandcampbtn{
+.bandcampbtn {
 	position:absolute;
-top: 15px;	
-left: 275px;
-font-size: 22px;
+	top: 15px;
+	left: 275px;
+	font-size: 22px;
 }
 
 .big-cover {
 	position: absolute;
 	width: 313px;
 	left: 30px;
-	top: 225px;	
+	top: 225px;
 }
 </style>
