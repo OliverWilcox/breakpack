@@ -3,18 +3,20 @@
 		<hr>
 		<p class="id" >{{id}}</p>
 		<p class="title">{{title}}</p>
-		<audio class="playtest" v-bind:src="track"></audio>
 		<img class="cover" v-bind:src="cover">
-		<p class="date" v-if="open === true">{{date}}</p>
-		<p class="artist" v-if="open === true">{{artist}}</p>
-		<p class="Type" v-if="open === true">{{type}}</p>
-		<img class="big-cover" v-bind:src="cover" v-if="open === true">
-		<div class="play" v-if="open === true">
+		<audio class="playtest" ref="player" v-bind:src="track"></audio>
+		<div class="opencontainer" v-if="open === true">
+		<p class="date">{{date}}</p>
+		<p class="artist">{{artist}}</p>
+		<p class="Type">{{type}}</p>
+		<img class="big-cover" v-bind:src="cover" >
+		<div class="play">
 		<div class="line"></div>
-		<p class="title" v-if="open === true">{{title}}</p>
+		<p class="title">{{title}}</p>
 		<p class="playbtn" v-on:click="open = !open, play = !play"><i class="fas fa-play" id="play" v-if="play === false" v-on:click="playing()"></i> <i class="fas fa-pause" id="pause" v-if="play === true" v-on:click="pausing()"></i></p>
 		<p class="spotifybtn" v-on:click="spotifyOpen()"><i class="fab fa-spotify"></i></p>
 		<p class="bandcampbtn"><i class="fab fa-bandcamp" v-on:click="bandcampOpen()"></i></p>
+		</div>
 		</div>
 	</div>
 </template>
@@ -22,6 +24,7 @@
 <script>
 export default {
 	props: [
+		'r',
 		'releases',
 		'id',
 		'title',
@@ -48,12 +51,10 @@ this.play = false;
          window.location = this.bandcamplink
 		},
 		playing(){
-			let test = document.querySelector(".playtest")
-			test.play()
+			this.$refs.player.play()
 		},
 		pausing(){
-			let test = document.querySelector(".playtest")
-			test.pause()
+			this.$refs.player.pause()
 		}
 	}
 };
