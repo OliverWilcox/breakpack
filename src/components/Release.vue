@@ -6,9 +6,7 @@
 
 			<p class="id" >{{release.id}}</p>
 			<p class="title" v-on:click="open = !open">{{release.title}}</p>
-
 			<img class="cover" v-bind:src="release.cover">
-
 		</div>
 
 		<audio class="playtest" ref="player" v-bind:src="release.track"></audio>
@@ -25,8 +23,12 @@
 				<p class="title">{{release.title}}</p>
 
 				<p class="playbtn">
-					<i class="fas fa-pause" v-if="playing === true" v-on:click="pause"></i>
-					<i class="fas fa-play" v-else v-on:click="play"></i>
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16" v-if="playing === true" v-on:click="pause">
+  <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16" v-else v-on:click="play">
+  <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+</svg>
 				</p>
 
 				<a class="spotifybtn" v-bind:href="release.spotifylink">
@@ -200,9 +202,12 @@ export default {
 
 .playbtn{
 	position:absolute;
-	top: 15px;
-	left: 19px;
-	font-size: 22px;
+	top: 10px;
+	left: 11px;
+	width: 100px;
+	height: 100px;
+	color: black;
+
 }
 
 .playbtn .open #pause{
@@ -213,7 +218,8 @@ export default {
 	position:absolute;
 	top: 15px;
 	left: 245px;
-	font-size: 22px;
+    font-size: 22px;
+	color: #1DB954;
 }
 
 .bandcampbtn {
@@ -221,6 +227,7 @@ export default {
 	top: 15px;
 	left: 275px;
 	font-size: 22px;
+	color: #629aa9;
 }
 
 .big-cover {
