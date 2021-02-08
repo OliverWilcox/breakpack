@@ -2,10 +2,10 @@
 	<div class="release" v-bind:class="{ open }">
 		<hr>
 
-		<div>
+		<div class="btnrelease" v-on:click="open = !open">{{release.title}}>
 
 			<p class="id" >{{release.id}}</p>
-			<p class="title" v-on:click="open = !open">{{release.title}}</p>
+			<p class="title">{{release.title}}</p>
 			<img class="cover" v-bind:src="release.cover">
 		</div>
 
@@ -71,6 +71,9 @@ export default {
 	height: 74px;
 	position: relative;
 	transition: 0.2s;
+}
+.btnrelease {
+	cursor: pointer;
 }
 
 .release.open {
