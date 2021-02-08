@@ -2,7 +2,7 @@
 	<div class="release" v-bind:class="{ open }">
 		<hr>
 
-		<div >
+		<div>
 
 			<p class="id" >{{release.id}}</p>
 			<p class="title" v-on:click="open = !open">{{release.title}}</p>
@@ -20,7 +20,7 @@
 
 			<div class="play">
 				<div class="line"></div>
-				<p class="title">{{release.title}}</p>
+				<p class="title-copy">{{release.title}}</p>
 
 				<p class="playbtn">
 					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16" v-if="playing === true" v-on:click="pause">
@@ -31,11 +31,11 @@
 </svg>
 				</p>
 
-				<a class="spotifybtn" v-bind:href="release.spotifylink">
+				<a class="spotifybtn" v-bind:href="release.spotifylink" target="_blank">
 					<i class="fab fa-spotify"></i>
 				</a>
 
-				<a class="bandcampbtn" v-bind:href="release.bandcamplink">
+				<a class="bandcampbtn" v-bind:href="release.bandcamplink" target="_blank">
 					<i class="fab fa-bandcamp"></i>
 				</a>
 			</div>
@@ -104,20 +104,24 @@ export default {
 	color: #FFFFFF;
 }
 
+.title,
+.title-copy {
+  position: absolute;
+  width: 162px;
+  height: 24px;
+  left: 119px;
+  top: 26px;
+
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
 .title {
-	position: absolute;
-	width: 162px;
-	height: 24px;
-	left: 119px;
-	top: 26px;
-
-	font-family: Rubik;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #FFFFFF;
+  cursor: pointer;
 }
 
 .cover {
@@ -183,7 +187,8 @@ export default {
 	background: #FFFFFF;
 }
 
-.play .title{
+.play .title,
+.play .title-copy{
 	top: 15px;
     color: black;
 	left: 75px;
@@ -208,6 +213,9 @@ export default {
 	height: 100px;
 	color: black;
 
+}
+.bi {
+  cursor: pointer;
 }
 
 .playbtn .open #pause{
