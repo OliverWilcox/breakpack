@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-- name: frontend
-  image: docker
-  commands:
-  - docker build . -t breakpack:latest
+- name: docker  
+  image: plugins/docker
+  settings:
+    tags: latest
