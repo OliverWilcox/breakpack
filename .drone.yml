@@ -4,7 +4,7 @@ name: default
 
 steps:
 - name: frontend
-  image: docker
+  image: docker/compose
   commands:
   - docker-compose build
 
