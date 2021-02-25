@@ -4,7 +4,6 @@ name: default
 
 steps:
 - name: frontend
-  image: docker/compose
+  image: docker
   commands:
-  - docker-compose build
-
+  - docker build . -t breakpack:latest
