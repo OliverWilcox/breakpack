@@ -7,3 +7,4 @@ steps:
   image: node
   commands:
   - docker-compose build
+
