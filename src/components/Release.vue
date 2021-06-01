@@ -71,18 +71,18 @@ export default {
 	height: 74px;
 	position: relative;
 	transition: 0.2s;
+	
 }
 
 .release.open {
 	height: 575px;
-	transition: 0.2s;
 }
 
 .release hr {
 	position: absolute;
-	width: 313px;
+	width: 309px;
 	height: 0px;
-	left: 30px;
+	left: 0px;
 	top: 0px;
 
 	border: 2px solid #FFFFFF;
@@ -92,7 +92,7 @@ export default {
 	position: absolute;
 	width: 80px;
 	height: 24px;
-	left: 30px;
+	left: 0px;
 	top: 26px;
 
 	font-family: Rubik;
@@ -109,7 +109,7 @@ export default {
   position: absolute;
   width: 162px;
   height: 24px;
-  left: 119px;
+  left: 89px;
   top: 26px;
 
   font-family: Rubik;
@@ -128,7 +128,7 @@ export default {
 	position: absolute;
 	width: 30px;
 	height: 30px;
-	left: 307px;
+	right: 0;
 	top: 20px;
 }
 
@@ -136,7 +136,7 @@ export default {
 	position: absolute;
 	width: 41px;
 	height: 19px;
-	left: 30px;
+	left: 0px;
 	top: 90px;
 
 	font-family: Rubik;
@@ -153,7 +153,7 @@ export default {
 	position: absolute;
 	width: 84px;
 	height: 19px;
-	left: 126px;
+	left: 90px;
 	top: 90px;
 	font-family: Rubik;
 	font-style: normal;
@@ -165,9 +165,8 @@ export default {
 
 .Type {
 	position: absolute;
-	width: 84px;
-	height: 19px;
-	left: 318px;
+	
+	right: 0;
 	top: 90px;
 	font-family: Rubik;
 	font-style: normal;
@@ -181,7 +180,7 @@ export default {
 	position: absolute;
 	width: 313px;
 	height: 54px;
-	left: 31px;
+	left: 0px;
 	top: 143px;
 
 	background: #FFFFFF;
@@ -241,7 +240,7 @@ export default {
 .big-cover {
 	position: absolute;
 	width: 313px;
-	left: 30px;
+	left: 0px;
 	top: 225px;
 }
 </style>
