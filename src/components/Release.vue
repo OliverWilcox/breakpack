@@ -91,6 +91,7 @@ export default {
     window.setInterval(() => {
       this.setProgress();
     }, 500);
+
   },
   computed: {
     progress() {},
@@ -129,6 +130,12 @@ export default {
         seconds = `0${seconds}`;
       }
       this.timeleft = `${minutes}:${seconds}`;
+
+      if (this.timeleft == "00:00"){
+        
+         this.playing = false;
+     
+      }
     },
   },
 };
@@ -142,16 +149,16 @@ export default {
 }
 
 .release.open {
-  height: 575px;
+  height: 620px;
 }
 
 .release hr {
-  position: absolute;
-  width: 309px;
+  position: relative;
+  width: 80vw;
   height: 0px;
-  left: 0px;
   top: 0px;
-
+  left: 50%;
+  transform: translateX(-50%);
   border: 2px solid #ffffff;
 }
 
@@ -245,7 +252,7 @@ export default {
 
 .play {
   position: absolute;
-  width: 313px;
+  width: 80vw;
   height: 64px;
   left: 0px;
   top: 143px;
@@ -258,8 +265,19 @@ export default {
   left: 58px;
   width: 56px;
   height: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgb(255, 255, 255);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  pointer-events: none;
+}
+
+.title-cont::-moz-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .play .title,
@@ -268,6 +286,8 @@ export default {
   transform: translateY(-50%);
   color: black;
   left: 10%;
+  position: absolute;
+
   font-size: 18px;
   animation: scrollText 3s infinite linear;
   animation-play-state: paused;
@@ -309,7 +329,7 @@ export default {
 
 .spotifybtn {
   position: absolute;
-  top: 540px;
+  top: 530px;
   left: 0px;
   font-size: 24px;
   color: #1db954;
@@ -318,7 +338,7 @@ export default {
 
 .bandcampbtn {
   position: absolute;
-  top: 540px;
+  top: 530px;
   left: 30px;
   font-size: 24px;
   color: #629aa9;
@@ -326,7 +346,7 @@ export default {
 
 .big-cover {
   position: absolute;
-  width: 313px;
+  width: 100%;
   left: 0px;
   top: 235px;
 }
@@ -359,6 +379,7 @@ export default {
   border-radius: 30px;
   cursor: pointer;
 }
+
 .progress-bar::-webkit-slider-runnable-track {
   appearance: none;
 
@@ -377,5 +398,146 @@ export default {
   font-size: 11px;
   color: black;
   font-family: Rubik;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: 1px solid #000000;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #000000;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 3px;
+  cursor: pointer;
+
+  background: #000000;
+}
+
+input[type="range"] {
+  height: 30px;
+  cursor: pointer;
+  background: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input[type="range"]::-moz-range-track {
+  background-color: rgb(0, 0, 0);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: rgb(0, 0, 0);
+}
+
+@media screen and (min-width: 400px) {
+  .play {
+    position: absolute;
+    width: 70vw;
+    height: 64px;
+    left: 0px;
+    top: 143px;
+
+    background: #ffffff;
+  }
+
+  .big-cover {
+    width: 70vw;
+    position: relative;
+  }
+
+  .release.open {
+    height: 140vw;
+  }
+  .spotifybtn {
+    position: absolute;
+    margin-top: 65vw;
+    top: 260px;
+  
+  }
+
+  .bandcampbtn {
+    position: absolute;
+    margin-top: 65vw;
+    top: 260px;
+   
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .play {
+    width: 45%;
+  }
+  .release.open {
+    height: 60vw;
+  }
+  .big-cover {
+    width: 35vw;
+    position: relative;
+    left: calc(100% - 35vw);
+    margin-top: 0vw;
+    top: 139px;
+  }
+  .progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+
+    background: #131313;
+
+    z-index: +1;
+    position: relative;
+    position: relative;
+    top: 20px;
+    left: 120px;
+    width: 14vw;
+  }
+
+  .release hr {
+    width: 70vw;
+  }
+  .spotifybtn {
+    position: absolute;
+    margin-top: 0vw;
+    top: 220px;
+    left: 0px;
+    margin-left: 0;
+    font-size: 24px;
+    color: #1db954;
+    height: 50px;
+  }
+
+  .bandcampbtn {
+    position: absolute;
+    margin-top: 0vw;
+    top: 220px;
+    left: 30px;
+    font-size: 24px;
+    color: #629aa9;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .progress-bar {
+    width: 14vw;
+  }
+  .release.open {
+    height: 52vw;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .play {
+    width: 30vw;
+  }
+  .release.open {
+    height: 45vw;
+  }
+
+  .progress-bar {
+    width: 18vw;
+  }
 }
 </style>

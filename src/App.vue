@@ -2,7 +2,6 @@
   <div id="app">
     <img class="breakpack" src="bplogo.png" />
 
-    <hr />
     <p class="about-1">
       Based in Bristol, UK and Founded by Niall Shaw in 2021, Breakpack is a
       music platform for a collection of forward-thinking electronic producers,
@@ -15,6 +14,7 @@
       <br />
       Built by Monty Anderson, Oliver Wilcox, and Oliver Redman.
     </p>
+    <hr class="bio-hr" />
     <div class="releases">
       <Release v-for="r in releases" v-bind:release="r"></Release>
     </div>
@@ -42,6 +42,7 @@ export default {
         bandcamplink: "https://shortghost.bandcamp.com/album/mana-man",
         track: "",
       },
+      
     ],
   }),
 };
@@ -49,17 +50,15 @@ export default {
 
 <style>
 #app {
-  width: 375px;
-  min-height: 800px;
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   left: 50%;
-  top: 400px;
+  top: 00px;
 }
 
 .breakpack {
-  position: absolute;
-  top: 40px;
+  position: relative;
+  margin-top: 40px;
   width: 200px;
   left: 50%;
   transform: translateX(-50%);
@@ -70,7 +69,6 @@ h1 {
   width: 268px;
   height: 43px;
   left: 52px;
-  top: 108px;
 
   font-family: Rubik Mono One;
   font-style: normal;
@@ -82,11 +80,12 @@ h1 {
 }
 
 .about-1 {
-  position: absolute;
+  position: relative;
   width: 319px;
   height: 126px;
-  left: 28px;
-  top: 231px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 40px;
 
   font-family: Rubik;
   font-style: normal;
@@ -99,39 +98,80 @@ h1 {
 }
 
 .about-2 {
-  position: absolute;
+  position: relative;
   width: 319px;
-  height: 70px;
-  left: 28px;
-  top: 355px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -15px;
 
   font-family: Rubik;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
-  line-height: 14px;
+
   text-align: justify;
 
   color: #ffffff;
 }
 
-hr {
-  position: absolute;
+.bio-hr {
+  position: relative;
   width: 95px;
   height: 0px;
-  left: 139px;
-  top: 498px;
 
+  margin-top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   border: 2px solid #ffffff;
 }
 
 .releases {
-  position: absolute;
-  top: 569px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
   height: auto;
   left: 50%;
   transform: translateX(-50%);
-  width: 313px;
-  height: 50px;
+  width: 80vw;
+}
+
+@media screen and (min-width: 750px) {
+  .breakpack {
+    left: 1%;
+
+    top: 3vw;
+    transform: none;
+    width: 30vw;
+  }
+  .about-1 {
+    width: 29vw;
+    font-size: 1vw;
+    left: calc(100% - 31vw);
+    transform: none;
+    margin-top: -17vw;
+    height: 5vw;
+    line-height: 1.4vw;
+  }
+  .about-2 {
+    width: 29vw;
+    font-size: 1vw;
+    left: calc(100% - 31vw);
+    transform: none;
+    margin-top: 6vw;
+
+    height: 5vw;
+    line-height: 1.4vw;
+  }
+  .bio-hr {
+    display: none;
+  }
+
+  .releases {
+    position: relative;
+    margin-top: 13vw;
+    width: 70vw;
+  }
 }
 </style>
