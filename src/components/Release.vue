@@ -1,4 +1,5 @@
 <template>
+
   <div class="release" v-bind:class="{ open }">
     <hr />
 
@@ -75,6 +76,51 @@
       </a>
     </div>
   </div>
+=======
+	<div class="release" v-bind:class="{ open }">
+		<hr>
+
+		<div class="btnrelease" v-on:click="open = !open">{{release.title}}>
+
+			<p class="id" >{{release.id}}</p>
+			<p class="title">{{release.title}}</p>
+			<img class="cover" v-bind:src="release.cover">
+		</div>
+
+		<audio class="playtest" ref="player" v-bind:src="release.track"></audio>
+
+		<div class="opencontainer" v-if="open === true">
+			<p class="date">{{release.date}}</p>
+			<p class="artist">{{release.artist}}</p>
+			<p class="Type">{{release.type}}</p>
+
+			<img class="big-cover" v-bind:src="release.cover">
+
+			<div class="play">
+				<div class="line"></div>
+				<p class="title-copy">{{release.title}}</p>
+
+				<p class="playbtn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16" v-if="playing === true" v-on:click="pause">
+  <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16" v-else v-on:click="play">
+  <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+</svg>
+				</p>
+
+				<a class="spotifybtn" v-bind:href="release.spotifylink" target="_blank">
+					<i class="fab fa-spotify"></i>
+				</a>
+
+				<a class="bandcampbtn" v-bind:href="release.bandcamplink" target="_blank">
+					<i class="fab fa-bandcamp"></i>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
 </template>
 
 <script>
@@ -146,6 +192,9 @@ export default {
   height: 74px;
   position: relative;
   transition: 0.2s;
+}
+.btnrelease {
+	cursor: pointer;
 }
 
 .release.open {

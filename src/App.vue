@@ -1,4 +1,5 @@
 <template>
+
   <div id="app">
     <img class="breakpack" src="bplogo.png" />
 
@@ -19,6 +20,20 @@
       <Release v-for="r in releases" v-bind:release="r"></Release>
     </div>
   </div>
+
+	<div id="app">
+		<img class="breakpack" src="bplogo.png"/>
+
+        <hr>
+		<p class="about-1">Based in Bristol, UK and Founded by Niall Shaw in 2021, Breakpack is a music platform for a collection of forward-thinking electronic producers, with the aim of connecting more likeminded individuals across the country from different genres, encouraging collaboration to bring out a new underground sound for electronic music.</p>
+        <p class="about-2"> Featuring artists such as shortghost, Sunbleach, and Spheress.<br>
+		<br>
+Built by Monty Anderson, Oliver Wilcox, and Oliver Redman.</p>
+	  	<div class="releases">
+		  	<Release v-for="r in releases" v-bind:release="r"></Release>
+	  	</div>
+	</div>
+
 </template>
 
 <script>
