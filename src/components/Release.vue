@@ -25,14 +25,14 @@
           max="100"
           :value="inputCurrentTime"
           ref="prog"
-          v-on:input="changeProgress()"
+          v-on:input="changeProgress"
           step="0.1"
         />
 
         <div class="time-left">{{ timeleft }}</div>
         <div class="line"></div>
         <div class="title-cont">
-          <p class="title-copy" ref="title">{{ release.title }}</p>
+          <p v-bind:class="titleCopy" ref="title">{{ release.title }}</p>
         </div>
 
         <p class="playbtn">
@@ -86,6 +86,8 @@ export default {
     playing: false,
     inputCurrentTime: 0,
     timeleft: 0,
+    isAnimationPlayState: false,
+     isTitleCopy: true,
   }),
   mounted() {
     window.setInterval(() => {
@@ -94,18 +96,28 @@ export default {
 
   },
   computed: {
-    progress() {},
+   
+
+ titleCopy: function() {
+return{
+  titleCopy: this.isTitleCopy,
+  animationPlayState: this.isAnimationPlayState
+  }
+    }
+  
   },
   methods: {
     play() {
       this.$refs.player.play();
       this.playing = true;
-      this.$refs.title.style.animationPlayState = "initial";
+      this.isAnimationPlayState = true;
+    
     },
     pause() {
       this.$refs.player.pause();
       this.playing = false;
-      this.$refs.title.style.animationPlayState = "paused";
+      this.isAnimationPlayState = false;
+   
     },
     changeProgress() {
       let audioTime =
@@ -179,7 +191,7 @@ export default {
 }
 
 .title,
-.title-copy {
+.titleCopy {
   position: absolute;
   width: 162px;
   height: 24px;
@@ -281,7 +293,7 @@ export default {
 }
 
 .play .title,
-.play .title-copy {
+.play .titleCopy {
   top: 50%;
   transform: translateY(-50%);
   color: black;
@@ -289,9 +301,16 @@ export default {
   position: absolute;
 
   font-size: 18px;
-  animation: scrollText 3s infinite linear;
-  animation-play-state: paused;
+ 
+
 }
+
+
+.animationPlayState{
+  animation-play-state: initial;
+   animation: scrollText 3s infinite linear;
+  }
+
 
 @keyframes scrollText {
   from {
